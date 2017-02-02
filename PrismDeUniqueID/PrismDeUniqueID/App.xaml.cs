@@ -1,4 +1,5 @@
 ﻿using Prism.Unity;
+using PrismDeUniqueID.Interfaces;
 using PrismDeUniqueID.Views;
 
 namespace PrismDeUniqueID
@@ -11,7 +12,7 @@ namespace PrismDeUniqueID
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("MainPage?title=Hello%20from%20Xamarin.Forms");
+            NavigationService.NavigateAsync("MainPage");
         }
 
         protected override void RegisterTypes()

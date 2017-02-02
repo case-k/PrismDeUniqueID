@@ -1,35 +1,36 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using PrismDeUniqueID.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace PrismDeUniqueID.ViewModels
 {
-    public class MainPageViewModel : BindableBase, INavigationAware
+    public class MainPageViewModel : BindableBase
     {
-        private string _title;
-        public string Title
+        private IDeviceInfo _deviceInfo;
+
+        private string _uniqueid;
+        public string UniqueID
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get { return _uniqueid; }
+            set { SetProperty(ref _uniqueid, value); }
         }
 
-        public MainPageViewModel()
-        {
+        public ICommand GetCommand { get; }
 
+        public MainPageViewModel(IDeviceInfo deviceInfo)
+        {
+            _deviceInfo = deviceInfo;
+            GetCommand = new DelegateCommand(GetID);
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        private void GetID()
         {
-
-        }
-
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            if (parameters.ContainsKey("title"))
-                Title = (string)parameters["title"] + " and Prism";
+            UniqueID = _deviceInfo.UniqueID;
         }
     }
 }

@@ -5,7 +5,10 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="PrismDeUniqueID.Views.MainPage"
              Title="MainPage">
+  
   <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
+    <Button Text="GET!" Command="{Binding GetCommand}" />
+    <Label Text="{Binding UniqueID, StringFormat='Unique ID：{0:0}'}" />
   </StackLayout>
+  
 </ContentPage>
