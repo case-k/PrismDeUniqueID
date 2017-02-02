@@ -9,6 +9,8 @@
   <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
     <Button Text="GET!" Command="{Binding GetCommand}" />
     <Label Text="{Binding UniqueID, StringFormat='Unique ID：{0:0}'}" />
+    <Label Text="{Binding Model, StringFormat='Model：{0:0}'}" />
+    <Label Text="{Binding Name, StringFormat='Name：{0:0}'}" />
   </StackLayout>
   
 </ContentPage>

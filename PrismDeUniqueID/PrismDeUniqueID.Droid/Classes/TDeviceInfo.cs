@@ -21,6 +21,16 @@ namespace PrismDeUniqueID.Droid.Classes
             get { return GetUUID(); }
         }
 
+        public string Model
+        {
+            get { return GetModel(); }
+        }
+
+        public string Name
+        {
+            get { return GetName(); }
+        }
+
 
         private string GetSerial()
         {
@@ -55,6 +65,19 @@ namespace PrismDeUniqueID.Droid.Classes
             var androidID = GetAndroidID();
             var deviceUuid = new UUID(androidID.GetHashCode(), serial.GetHashCode());
             return deviceUuid.ToString();
+        }
+
+
+        private string GetModel()
+        {
+            return Android.OS.Build.Model;
+        }
+
+
+        private string GetName()
+        {
+            return "n/a";
+            // Android‚É‚Í‘Š“–‚·‚é€–Ú‚ª–³‚¢c‚æ‚ËH
         }
     }
 }
