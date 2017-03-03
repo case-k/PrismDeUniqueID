@@ -11,6 +11,7 @@
     <Label Text="{Binding UniqueID, StringFormat='Unique ID：{0:0}'}" />
     <Label Text="{Binding Model, StringFormat='Model：{0:0}'}" />
     <Label Text="{Binding Name, StringFormat='Name：{0:0}'}" />
+    <Label x:Name="lblOrientation" Text="" />
   </StackLayout>
   
 </ContentPage>

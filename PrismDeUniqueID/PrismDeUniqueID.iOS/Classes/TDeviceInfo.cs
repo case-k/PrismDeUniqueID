@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrismDeUniqueID.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -24,6 +25,11 @@ namespace PrismDeUniqueID.iOS.Classes
             get { return GetName(); }
         }
 
+        public DeviceOrientation Orientation
+        {
+            get { return GetOrientation(); }
+        }
+
 
         private string GetUniqueID()
         {
@@ -38,6 +44,19 @@ namespace PrismDeUniqueID.iOS.Classes
         private string GetName()
         {
             return UIKit.UIDevice.CurrentDevice.Name;
+        }
+
+        private DeviceOrientation GetOrientation()
+        {
+            var orientation = UIKit.UIApplication.SharedApplication.StatusBarOrientation;
+            switch (orientation)
+            {
+                case UIKit.UIInterfaceOrientation.Portrait: return DeviceOrientation.Portrait;
+                case UIKit.UIInterfaceOrientation.PortraitUpsideDown: return DeviceOrientation.Portrait;
+                case UIKit.UIInterfaceOrientation.LandscapeRight: return DeviceOrientation.Landscape;
+                case UIKit.UIInterfaceOrientation.LandscapeLeft: return DeviceOrientation.Landscape;
+                default: return DeviceOrientation.Unknown;
+            }
         }
     }
 }

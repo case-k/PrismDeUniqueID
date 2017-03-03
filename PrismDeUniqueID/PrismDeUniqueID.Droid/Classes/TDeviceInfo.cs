@@ -4,6 +4,8 @@ using Android.Telephony;
 using Android.Provider;
 
 using Java.Util;
+using PrismDeUniqueID.Interfaces;
+using Android.Content.Res;
 
 //using Xamarin.Forms;
 
@@ -29,6 +31,11 @@ namespace PrismDeUniqueID.Droid.Classes
         public string Name
         {
             get { return GetName(); }
+        }
+
+        public DeviceOrientation Orientation
+        {
+            get { return GetOrientation(); }
         }
 
 
@@ -67,17 +74,27 @@ namespace PrismDeUniqueID.Droid.Classes
             return deviceUuid.ToString();
         }
 
-
         private string GetModel()
         {
             return Android.OS.Build.Model;
         }
 
-
         private string GetName()
         {
             return "n/a";
             // AndroidÇ…ÇÕëäìñÇ∑ÇÈçÄñ⁄Ç™ñ≥Ç¢ÅcÇÊÇÀÅH
+        }
+
+        private DeviceOrientation GetOrientation()
+        {
+            Resources resources = Resources.System;
+            Configuration config = resources.Configuration;
+            switch(config.Orientation)
+            {
+                case Android.Content.Res.Orientation.Landscape: return DeviceOrientation.Landscape;
+                case Android.Content.Res.Orientation.Portrait: return DeviceOrientation.Portrait;
+                default: return DeviceOrientation.Unknown;
+            }
         }
     }
 }
